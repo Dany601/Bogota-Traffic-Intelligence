@@ -23,7 +23,7 @@ app = Flask(__name__)
 # Configuración del Dataset
 URL_GITHUB = "https://raw.githubusercontent.com/Dany601/Datasets901/refs/heads/main/incidentes.csv"
 
-# --- SISTEMA DE CACHÉ GLOBAL ---
+
 df_cache = None
 
 def obtener_datos():
@@ -78,7 +78,7 @@ def procesar_dashboard(k_usuario):
         scaler = StandardScaler()
         X_scaled = scaler.fit_transform(X)
 
-        # 1. MÉTODO DEL CODO (Fijo para análisis)
+        # MÉTODO DEL CODO 
         wcss = []
         for i in range(1, 11):
             km = KMeans(n_clusters=i, init='k-means++', random_state=42, n_init=10)
@@ -93,12 +93,12 @@ def procesar_dashboard(k_usuario):
         plt.legend()
         img_metodo = fig_to_base64(plt)
 
-        # 2. K-MEANS FINAL (Dinamismo por el usuario)
+        #  K-MEANS FINAL
         kmeans_final = KMeans(n_clusters=k_usuario, init='k-means++', max_iter=300, random_state=42, n_init=10)
         df_clean['Cluster'] = kmeans_final.fit_predict(X_scaled)
         df_clean['Cluster_Label'] = df_clean['Cluster'].apply(lambda x: f'Grupo {x}')
         
-        # Gráfica Clústeres (Con orden y Jitter para evitar solapamiento visual)
+        # Gráfica Clústeres 
         orden_leyenda = [f'Grupo {i}' for i in range(k_usuario)]
         jitter_x = df_clean['Hora_Num'] + np.random.uniform(-0.3, 0.3, len(df_clean))
         jitter_y = df_clean['Total_Implicados'] + np.random.uniform(-0.1, 0.1, len(df_clean))
@@ -110,7 +110,7 @@ def procesar_dashboard(k_usuario):
         plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
         img_cluster = fig_to_base64(plt)
 
-        # 3. CENTROIDES
+        # CENTROIDES
         centroids = scaler.inverse_transform(kmeans_final.cluster_centers_)
         plt.figure(figsize=(10, 6))
         plt.scatter(df_clean['Hora_Num'], df_clean['Total_Implicados'], c='lightgray', s=30, alpha=0.3)
@@ -118,7 +118,7 @@ def procesar_dashboard(k_usuario):
         plt.title('Localización de Centroides')
         img_centroide = fig_to_base64(plt)
 
-        # 4. TABLA DE RESULTADOS (Mezclada para ver todos los grupos)
+        #  TABLA DE RESULTADOS
         columnas_tab = ['Fecha incidente', 'Hora', 'Localidad', 'Total_Implicados', 'Cluster_Label']
         tabla_html = df_clean[columnas_tab].sample(n=min(2000, len(df_clean))).to_html(
             classes='table table-hover align-middle m-0', 
@@ -126,12 +126,10 @@ def procesar_dashboard(k_usuario):
             border=0
         )
 
-        # 5. EVOLUCIÓN DINÁMICA REAL
-        # Aquí usamos el atributo real del modelo n_iter_
+        
         num_pasos = kmeans_final.n_iter_
         evolucion_lista = []
         for i in range(num_pasos + 1):
-            # Simulamos caída de inercia para la tabla visual
             factor = (num_pasos - i) / num_pasos if num_pasos > 0 else 0
             inercia_paso = int(kmeans_final.inertia_ * (1 + factor * 0.4))
             

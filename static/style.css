@@ -109,7 +109,7 @@
             margin: 20px auto; 
             font-size: 1.2rem;
         }
-        /* ESTILO DESCRIPCION*/
+    
         .section-title {
             font-size: 3.5rem;
             font-weight: 800;
@@ -150,7 +150,7 @@
             max-width: 1100px;
         }
 
-        /* TARJETAS DESCRIPCION*/
+     
                 .dataset-summary {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -211,10 +211,9 @@
             color: #6b7280;
         }
 
-        /* FIN DESCRIPCION*/
+     
 
 
-/* --- ESTILOS PARA DATASET (MODERNO) --- */
 
 .dataset-info-card {
     background: white;
@@ -323,7 +322,7 @@
 /* CONCEPTOS */
 .concepts-section {
     width: 100%;
-    min-height: 100vh !important; /* Mantiene la separación de "una página" */
+    min-height: 100vh !important; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -421,63 +420,59 @@
 .step-connector {
     flex: 1; height: 3px;
     background: #e2e8f0;
-    margin-bottom: 35px; /* Ajuste para alinear con el círculo */
+    margin-bottom: 35px; 
     z-index: 1;
 }
-/* --- ESTILO DE LOS CÍRCULOS PARA LOS PASOS --- */
+
 .step-number {
-    width: 55px;         /* Ancho del círculo */
-    height: 55px;        /* Alto del círculo */
-    background: #3b82f6; /* Azul vibrante */
-    color: white;        /* Color del número */
-    border-radius: 50%;  /* Esto lo hace circular */
-    display: flex;       /* Centra el número horizontalmente */
-    align-items: center; /* Centra el número verticalmente */
+    width: 55px;        
+    height: 55px;       
+    background: #3b82f6; 
+    color: white;        
+    border-radius: 50%;  
+    display: flex;       
+    align-items: center; 
     justify-content: center;
-    font-size: 1.4rem;   /* Tamaño del número */
-    font-weight: 800;    /* Grosor del número */
-    margin: 0 auto 15px; /* Centra el círculo y da espacio abajo */
-    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4); /* Sombra azulada */
-    border: 3px solid white; /* Borde blanco para resaltar */
+    font-size: 1.4rem;   
+    font-weight: 800;    
+    margin: 0 auto 15px; 
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4); 
+    border: 3px solid white; 
     position: relative;
     z-index: 2;
 }
 
-/* Ajuste opcional para las líneas conectoras */
+
 .step-line {
     flex: 1;
     height: 2px;
     background-color: #e2e8f0;
-    margin-top: 28px; /* Ajusta esto para que la línea quede a mitad del círculo */
+    margin-top: 28px; 
     z-index: 1;
 }
 
-/* Asegura que los ítems estén bien alineados */
 .step-item {
     text-align: center;
     flex: 1;
 }
-/* --- CUADRO DE DEFINICIÓN OSCURO (Imagen b54e75) --- */
 .definition-callout {
-    background-color: #0b1a2a; /* Azul noche muy oscuro */
-    color: #ffffff;            /* Texto blanco puro */
-    padding: 40px 60px;        /* Espaciado interno generoso */
-    border-radius: 20px;       /* Bordes muy redondeados */
-    text-align: center;        /* Centrado de texto */
-    font-size: 1.15rem;        /* Tamaño de letra legible */
-    line-height: 1.6;          /* Interlineado cómodo */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidad */
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Borde casi invisible */
+    background-color: #0b1a2a; 
+    color: #ffffff;            
+    padding: 40px 60px;        
+    border-radius: 20px;       
+    text-align: center;        
+    font-size: 1.15rem;        
+    line-height: 1.6;          
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+    border: 1px solid rgba(255, 255, 255, 0.05); 
 }
 
-/* Ajuste para que se vea bien en móviles */
 @media (max-width: 768px) {
     .definition-callout {
         padding: 25px 30px;
         font-size: 1rem;
     }
 }
-/* Estilo para la barra de desplazamiento (Scrollbar) */
     .table-responsive::-webkit-scrollbar {
         width: 8px;
     }
@@ -492,7 +487,6 @@
         background: #2563eb;
     }
 
-    /* Estilo de la tabla */
     .table thead {
         position: sticky;
         top: 0;
@@ -507,7 +501,6 @@
         color: #495057;
         padding: 15px;
     }
-    /* Resaltado del Grupo/Centroide */
     .table td:last-child {
         font-weight: bold;
         color: #3b82f6;
